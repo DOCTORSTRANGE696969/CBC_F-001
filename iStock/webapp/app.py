@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC
 
 # Keep Chrome from exiting instantly
@@ -35,7 +35,9 @@ except Exception as e:
 
 driver.quit()
 
-app = Flask(_name_)
+app = Flask(__name__)
+
+
 
 @app.route('/')
 def index():
@@ -118,5 +120,5 @@ def predict_stock_movement(stock_data, model, input_date, features, company_name
     except Exception as e:
         return {"error": str(e)}
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     app.run(debug=True)
